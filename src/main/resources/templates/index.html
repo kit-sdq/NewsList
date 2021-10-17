@@ -19,12 +19,9 @@
 <head>
     <title>News List</title>
     <meta charset="utf-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <style>
-        span, dt {
-            font-weight: bold;
-        }
     </style>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
 <div class="container">
@@ -42,12 +39,18 @@
     </div>
     <main role="main" class="container">
         <h1 class="mt-5">SDQ-NewsList</h1>
-        <p class="lead">You are successfully identified as <span th:text="${saml2key}"></span></p>
+        <p class="lead">You are successfully identified as <b th:text="${saml2key}"></b>.</p>
         <h2 class="mt-2">Your News</h2>
-        <dl th:each="newsItem : ${news}">
-            <dt th:text="${newsItem.getTitle()}"></dt>
-            <dd th:text="${newsItem.getContent()}"></dd>
-        </dl>
+        <div class="list-group" th:each="newsItem : ${news}">
+            <a href="#" class="list-group-item">
+                <div class="d-flex gap-2">
+                    <div>
+                        <div class="fw-bold" th:text="${newsItem.getTitle()}"></div>
+                        <p class="mb-0 opacity-75" th:text="${newsItem.getContent()}"></p>
+                    </div>
+                </div>
+            </a>
+        </div>
     </main>
 </div>
 </body>
