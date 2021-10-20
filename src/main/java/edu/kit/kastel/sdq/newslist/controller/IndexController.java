@@ -17,7 +17,7 @@ public class IndexController {
 	@Value("${news.saml2-key}")
 	private String newsSAML2Key;
 
-	private NewsService newsService;
+	private final NewsService newsService;
 
 	public IndexController(NewsService newsService) {
 		this.newsService = newsService;

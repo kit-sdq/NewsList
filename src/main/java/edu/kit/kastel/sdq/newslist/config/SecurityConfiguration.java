@@ -1,5 +1,6 @@
 package edu.kit.kastel.sdq.newslist.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,7 +30,6 @@ public class SecurityConfiguration {
 					.anyRequest().authenticated()
 				)
 				.saml2Login(Customizer.withDefaults());
-				//.saml2Logout(Customizer.withDefaults());
 		// @formatter:on
 
 		return http.build();
