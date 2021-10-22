@@ -3,7 +3,7 @@ WORKDIR /usr/src/newslist
 COPY . .
 RUN ./gradlew build
 
-FROM azul/zulu-openjdk-alpine:11
+FROM azul/zulu-openjdk-alpine:17
 RUN addgroup -S spring && adduser -S spring -G spring
 USER spring:spring
 
