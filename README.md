@@ -12,9 +12,9 @@
 # Docker
 ```bash
 # Run the following commands to build a docker image
-./gradlew build
 docker build -t repository/tag .
 
-# Map a custom application.yml into /config and a news folder to /news. For example:
-docker run -p 8080:8080 -v path/to/news:/news -v path/to/src/main/resources:/config repository/tag 
+# Newslist gets executed at /usr/src/newslist/news.jar
+# Map a custom application.yml into /usr/src/newslist/config. For example:
+docker run -p 8080:8080 -v $(pwd)/demo/:/usr/src/newslist/config/ repository/tag
 ```

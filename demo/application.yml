@@ -1,0 +1,23 @@
+spring:
+  security:
+    saml2:
+      relyingparty:
+        registration:
+          one:
+            signing.credentials:
+              - private-key-location: file:/usr/src/newslist/config/credentials/rp-private.key
+                certificate-location: file:/usr/src/newslist/config/credentials/rp-certificate.crt
+            identityprovider:
+              metadata-uri: https://simplesaml-for-spring-saml.apps.pcfone.io/saml2/idp/metadata.php
+
+news:
+  # path to csv files containing (key, message) pairs
+  csv-path: /usr/src/newslist/config/news
+  # One of http://commons.apache.org/proper/commons-csv/apidocs/org/apache/commons/csv/CSVFormat.Predefined.html
+  csv-format: Default
+  # The saml2 attribute used as key
+  saml2-key: uid
+
+logging.level:
+  org.springframework.security: TRACE
+  edu.kit: DEBUG
