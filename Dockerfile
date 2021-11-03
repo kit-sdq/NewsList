@@ -4,8 +4,8 @@ COPY . .
 RUN chmod +x ./gradlew && ./gradlew build
 
 FROM azul/zulu-openjdk-alpine:11
-RUN addgroup -S spring && adduser -S spring -G spring
-USER spring:spring
+
+USER 999
 
 WORKDIR /usr/src/newslist
 COPY --from=builder /usr/src/newslist/build/libs/*SNAPSHOT.jar news.jar

@@ -1,5 +1,6 @@
 package edu.kit.kastel.sdq.newslist.config;
 
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +14,8 @@ import org.springframework.security.saml2.provider.service.web.RelyingPartyRegis
 import org.springframework.security.saml2.provider.service.web.Saml2MetadataFilter;
 import org.springframework.security.web.SecurityFilterChain;
 
+import java.security.Security;
+
 /**
  * Security configuration using SAML2. Sample project:
  * https://github.com/spring-projects/spring-security-samples/tree/main/servlet/spring-boot/java/saml2/login
@@ -21,6 +24,10 @@ import org.springframework.security.web.SecurityFilterChain;
  */
 @Configuration
 public class SecurityConfiguration {
+
+	public SecurityConfiguration(){
+		Security.addProvider(new BouncyCastleProvider());
+	}
 
 	@Bean
 	SecurityFilterChain app(HttpSecurity http) throws Exception {
