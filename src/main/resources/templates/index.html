@@ -10,7 +10,7 @@
 <body>
     <main role="main" class="container">
         <h1 class="mt-5">SDQ-NewsList</h1>
-        <p class="lead">You are successfully identified as <b th:text="${saml2key}"></b>.</p>
+        <p class="lead">You are successfully identified as <b th:text="${emailAddress}"></b>. Looking for News via '<b th:text="${saml2key}"></b>'.</p>
         <h2 class="mt-2">Your News</h2>
         <div class="list-group" th:each="newsItem : ${news}">
             <a href="#" class="list-group-item">
