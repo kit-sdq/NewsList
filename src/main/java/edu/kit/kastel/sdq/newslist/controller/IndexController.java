@@ -32,9 +32,8 @@ public class IndexController {
 
         model.addAttribute("saml2key", newsKey);
         model.addAttribute("news", newsService.getNewsForKey(newsKey));
-        String emailAddress = principal.getFirstAttribute("emailAddress");
+        String emailAddress = principal.getFirstAttribute("uid");
         model.addAttribute("emailAddress", emailAddress);
-        model.addAttribute("userAttributes", principal.getAttributes());
         return "index";
     }
 
