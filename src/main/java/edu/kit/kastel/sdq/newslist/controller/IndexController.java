@@ -14,24 +14,28 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class IndexController {
 
-	@Value("${news.saml2-key}")
-	private String newsSAML2Key;
+    @Value("${news.saml2-key}")
+    private String newsSAML2Key;
 
-	private final NewsService newsService;
+    private final NewsService newsService;
 
-	public IndexController(NewsService newsService) {
-		this.newsService = newsService;
-	}
+    public IndexController(NewsService newsService) {
+        this.newsService = newsService;
+    }
 
-	@GetMapping("/")
-	public String index(Model model, @AuthenticationPrincipal Saml2AuthenticatedPrincipal principal) {
-		String newsKey = principal.getFirstAttribute(newsSAML2Key);
-		model.addAttribute("saml2key", newsKey);
-		model.addAttribute("news", newsService.getNewsForKey(newsKey));
-		String emailAddress = principal.getFirstAttribute("emailAddress");
-		model.addAttribute("emailAddress", emailAddress);
-		model.addAttribute("userAttributes", principal.getAttributes());
-		return "index";
-	}
+    @GetMapping("/")
+    public String index(Model model, @AuthenticationPrincipal Saml2AuthenticatedPrincipal principal) {
+        String newsKey = principal.getFirstAttribute(newsSAML2Key);
+        // If saml value is not present, simply set to empty string by default
+        if (newsKey == null)
+            newsKey = "";
+
+        model.addAttribute("saml2key", newsKey);
+        model.addAttribute("news", newsService.getNewsForKey(newsKey));
+        String emailAddress = principal.getFirstAttribute("emailAddress");
+        model.addAttribute("emailAddress", emailAddress);
+        model.addAttribute("userAttributes", principal.getAttributes());
+        return "index";
+    }
 
 }
