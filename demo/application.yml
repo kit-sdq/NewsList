@@ -17,6 +17,7 @@ news:
   csv-format: Default
   # The saml2 attribute used as key
   saml2-key: uid
+  mail-saml2-key: emailAddress
 
 logging.level:
   org.springframework.security: TRACE

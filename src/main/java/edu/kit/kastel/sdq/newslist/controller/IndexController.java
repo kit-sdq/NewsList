@@ -17,6 +17,9 @@ public class IndexController {
     @Value("${news.saml2-key}")
     private String newsSAML2Key;
 
+    @Value("${news.mail-saml2-key}")
+    private String mailSAML2Key;
+
     private final NewsService newsService;
 
     public IndexController(NewsService newsService) {
@@ -30,10 +33,13 @@ public class IndexController {
         if (newsKey == null)
             newsKey = "";
 
+        String emailAddress = principal.getFirstAttribute(mailSAML2Key);
+        if(emailAddress == null)
+            emailAddress = "anonymous";
+
         model.addAttribute("saml2key", newsKey);
-        model.addAttribute("news", newsService.getNewsForKey(newsKey));
-        String emailAddress = principal.getFirstAttribute("uid");
         model.addAttribute("emailAddress", emailAddress);
+        model.addAttribute("news", newsService.getNewsForKey(newsKey));
         return "index";
     }
 

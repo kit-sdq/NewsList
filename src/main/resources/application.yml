@@ -17,6 +17,7 @@ news:
   csv-format: Default
   # The saml2 attribute used as key
   saml2-key: # the saml2 key to use as key in csv files
+  mail-saml2-key: # the saml2 key to get a name (e.g., the mail address)
 
 logging.level:
   org.springframework.security: WARN
