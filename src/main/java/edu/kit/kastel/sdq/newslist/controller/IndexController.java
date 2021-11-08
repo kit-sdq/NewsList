@@ -34,7 +34,7 @@ public class IndexController {
             newsKey = "";
 
         String emailAddress = principal.getFirstAttribute(mailSAML2Key);
-        if(emailAddress == null)
+        if (emailAddress == null)
             emailAddress = "anonymous";
 
         model.addAttribute("saml2key", newsKey);
