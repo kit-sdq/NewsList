@@ -1,9 +1,9 @@
-FROM gradle:7.2-jdk11 as builder
+FROM gradle:7.3-jdk11 as builder
 WORKDIR /usr/src/newslist
 COPY . .
 RUN chmod +x ./gradlew && ./gradlew build
 
-FROM azul/zulu-openjdk-alpine:11
+FROM eclipse-temurin:11
 
 USER 999
 
