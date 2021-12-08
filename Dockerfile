@@ -3,7 +3,7 @@ WORKDIR /usr/src/newslist
 COPY . .
 RUN chmod +x ./gradlew && ./gradlew build
 
-FROM eclipse-temurin:11
+FROM eclipse-temurin:17
 
 USER 999
 
