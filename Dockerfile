@@ -1,4 +1,4 @@
-FROM gradle:7.3-jdk11 as builder
+FROM gradle:7.4.1-jdk11 as builder
 WORKDIR /usr/src/newslist
 COPY . .
 RUN chmod +x ./gradlew && ./gradlew build
