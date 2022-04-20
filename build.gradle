@@ -14,7 +14,7 @@ dependencies {
 	constraints {
 		implementation "org.opensaml:opensaml-core:4.1.1"
 		implementation "org.opensaml:opensaml-saml-api:4.1.1"
-		implementation "org.opensaml:opensaml-saml-impl:4.1.1"
+		implementation "org.opensaml:opensaml-saml-impl:4.2.0"
 	}
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
