@@ -1,5 +1,5 @@
 plugins {
-	id 'org.springframework.boot' version '2.7.5'
+	id 'org.springframework.boot' version '3.0.0'
 	id 'io.spring.dependency-management' version '1.1.0'
 	id 'java'
 }
@@ -8,10 +8,6 @@ repositories {
 	mavenCentral()
 	maven { url "https://repo.spring.io/snapshot" }
 	maven { url "https://build.shibboleth.net/nexus/content/repositories/releases/" }
-}
-
-ext {
-	samlVersion = '4.2.0'
 }
 
 dependencies {
@@ -24,8 +20,6 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.security:spring-security-saml2-service-provider'
-
-	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 
 	implementation 'org.apache.commons:commons-csv:1.9.0'
 

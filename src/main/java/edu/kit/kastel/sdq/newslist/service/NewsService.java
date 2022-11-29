@@ -4,10 +4,10 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
  * Service class parsing the CSV files and fetching news for a SAML2 user.
  */
 @Service
-public class NewsService {
+public class NewsService implements InitializingBean {
 
     @Value("${news.csv-path}")
     private String csvPath;
@@ -40,7 +40,6 @@ public class NewsService {
         news = new HashMap<>();
     }
 
-    @PostConstruct
     public void parseCSVs() {
         logger.debug("Parsing news items from CSVs");
         logger.debug("CSV path is " + csvPath + " , CSV format is " + csvFormat);
@@ -94,6 +93,12 @@ public class NewsService {
      */
     public List<NewsItem> getNewsForKey(final String key) {
         return news.getOrDefault(key, new ArrayList<>());
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        this.parseCSVs();
+        
     }
 
 }
