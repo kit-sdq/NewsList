@@ -7,9 +7,8 @@ spring:
             signing.credentials:
               - private-key-location: file:/usr/src/newslist/config/credentials/rp-private.key
                 certificate-location: file:/usr/src/newslist/config/credentials/rp-certificate.crt
-            identityprovider:
+            assertingparty:
               metadata-uri: https://simplesaml-for-spring-saml.apps.pcfone.io/saml2/idp/metadata.php
-            entity-id: one
 
 news:
   # path to csv files containing (key, message) pairs
