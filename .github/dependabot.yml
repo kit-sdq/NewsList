@@ -20,7 +20,7 @@ updates:
     commit-message:
       prefix: "Dependency"
       include: "scope"
-  - package-ecosystem: "actions"
+  - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
