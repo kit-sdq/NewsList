@@ -1,7 +1,7 @@
 FROM gradle:8.6-jdk17 as builder
 WORKDIR /usr/src/newslist
 COPY . .
-RUN chmod +x ./gradlew && ./gradlew bootJar
+RUN gradle bootJar
 
 FROM eclipse-temurin:17
 
