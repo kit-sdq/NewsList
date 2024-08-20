@@ -1,28 +1,27 @@
 <!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" lang="en">
 <head>
     <title>News List</title>
-    <meta charset="utf-8" />
-    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
-    <style>
-    </style>
+    <meta charset="utf-8"/>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
 </head>
 <body>
-    <main role="main" class="container">
-        <h1 class="mt-5">SDQ-NewsList</h1>
-        <p class="lead">You are successfully identified as <b th:text="${emailAddress}"></b>. Looking for News via '<b th:text="${saml2key}"></b>'.</p>
-        <h2 class="mt-2">Your News</h2>
-        <div class="list-group" th:each="newsItem : ${news}">
-            <a href="#" class="list-group-item">
-                <div class="d-flex gap-2">
-                    <div>
-                        <div class="fw-bold" th:text="${newsItem.getTitle()}"></div>
-                        <p class="mb-0 opacity-75" th:text="${newsItem.getContent()}"></p>
-                    </div>
+<main role="main" class="container">
+    <h1 class="mt-5">SDQ-NewsList</h1>
+    <p class="lead">You are successfully identified as <b th:text="${emailAddress}"></b>. Looking for News via '<b
+            th:text="${saml2key}"></b>'.</p>
+    <h2 class="mt-2">Your News</h2>
+    <div class="list-group" th:each="newsItem : ${news}">
+        <a href="#" class="list-group-item">
+            <div class="d-flex gap-2">
+                <div>
+                    <div class="fw-bold" th:text="${newsItem.getTitle()}"></div>
+                    <p class="mb-0 opacity-75" th:text="${newsItem.getContent()}"></p>
                 </div>
-            </a>
-        </div>
-    </main>
-</div>
+            </div>
+        </a>
+    </div>
+</main>
 </body>
 </html>

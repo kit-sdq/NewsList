@@ -52,7 +52,7 @@ public class NewsService implements InitializingBean {
                     .map(Path::toFile)
                     .filter(e -> e.getName().endsWith(".csv"))
                     .sorted()
-                    .collect(Collectors.toList());
+                    .toList();
 
         } catch (IOException e) {
             logger.warn("CSVs could not be parsed.", e);
@@ -62,20 +62,20 @@ public class NewsService implements InitializingBean {
         for (File file : files) {
             logger.debug("Parsing " + file.getAbsolutePath());
             try {
-                for (CSVRecord record : format.parse(new FileReader(file))) {
-                    if (record.size() != 2) {
-                        logger.warn("Expected exactly two columns, but record " + record + " had " + record.size()  + ". Skipping!");
+                for (CSVRecord csvRecord : format.parse(new FileReader(file))) {
+                    if (csvRecord.size() != 2) {
+                        logger.warn("Expected exactly two columns, but record " + csvRecord + " had " + csvRecord.size()  + ". Skipping!");
                         continue;
                     }
 
-                    final String key = record.get(0);
+                    final String key = csvRecord.get(0);
                     if (!news.containsKey(key)) {
                         news.put(key, new LinkedList<>());
                     }
 
 
                     String title = file.getName().substring(0, file.getName().length() - 4).replaceAll("[_]", "");
-                    String content = record.get(1);
+                    String content = csvRecord.get(1);
                     news.get(key).add(new NewsItem(title, content));
                 }
 

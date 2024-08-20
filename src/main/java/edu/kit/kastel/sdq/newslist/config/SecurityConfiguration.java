@@ -25,35 +25,28 @@ import java.security.Security;
 @Configuration
 public class SecurityConfiguration {
 
-	public SecurityConfiguration(){
-		Security.addProvider(new BouncyCastleProvider());
-	}
+    public SecurityConfiguration() {
+        Security.addProvider(new BouncyCastleProvider());
+    }
 
-	@Bean
-	SecurityFilterChain app(HttpSecurity http) throws Exception {
-		// @formatter:off
-		http
-				.authorizeHttpRequests((authorize) -> authorize
-					.anyRequest().authenticated()
-				)
-				.saml2Login(Customizer.withDefaults());
-		// @formatter:on
+    @Bean
+    SecurityFilterChain app(HttpSecurity http) throws Exception {
+        http.authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated()).saml2Login(Customizer.withDefaults());
+        return http.build();
+    }
 
-		return http.build();
-	}
+    @Bean
+    RelyingPartyRegistrationResolver relyingPartyRegistrationResolver(
+            RelyingPartyRegistrationRepository registrations) {
+        return new DefaultRelyingPartyRegistrationResolver(registrations);
+    }
 
-	@Bean
-	RelyingPartyRegistrationResolver relyingPartyRegistrationResolver(
-			RelyingPartyRegistrationRepository registrations) {
-		return new DefaultRelyingPartyRegistrationResolver(registrations);
-	}
-
-	@Bean
-	FilterRegistrationBean<Saml2MetadataFilter> metadata(RelyingPartyRegistrationResolver registrations) {
-		Saml2MetadataFilter metadata = new Saml2MetadataFilter(registrations, new OpenSamlMetadataResolver());
-		FilterRegistrationBean<Saml2MetadataFilter> filter = new FilterRegistrationBean<>(metadata);
-		filter.setOrder(-101);
-		return filter;
-	}
+    @Bean
+    FilterRegistrationBean<Saml2MetadataFilter> metadata(RelyingPartyRegistrationResolver registrations) {
+        Saml2MetadataFilter metadata = new Saml2MetadataFilter(registrations, new OpenSamlMetadataResolver());
+        FilterRegistrationBean<Saml2MetadataFilter> filter = new FilterRegistrationBean<>(metadata);
+        filter.setOrder(-101);
+        return filter;
+    }
 
 }

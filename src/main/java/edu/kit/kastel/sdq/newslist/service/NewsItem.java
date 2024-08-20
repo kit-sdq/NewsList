@@ -4,8 +4,8 @@ package edu.kit.kastel.sdq.newslist.service;
  * @author Lucas Alber
  */
 public class NewsItem {
-    private String title;
-    private String content;
+    private final String title;
+    private final String content;
 
     /**
      *
