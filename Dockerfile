@@ -1,4 +1,4 @@
-FROM gradle:8.11-jdk17 as builder
+FROM gradle:8.12-jdk17 as builder
 WORKDIR /usr/src/newslist
 COPY . .
 RUN gradle bootJar
