@@ -1,0 +1,18 @@
+services:
+  newslist:
+    image: ghcr.io/kit-sdq/newslist:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./news:/usr/src/newslist/config/news:ro
+      - ./application.yml:/usr/src/newslist/config/application.yml:ro
+    depends_on:
+      - saml
+  saml:
+    image: jamedjo/test-saml-idp
+    hostname: saml
+    ports:
+      - "9980:8080"
+    volumes:
+      - ./saml/saml20-sp-remote.php:/var/www/simplesamlphp/metadata/saml20-sp-remote.php
+      - ./saml/config.php:/var/www/simplesamlphp/config/config.php

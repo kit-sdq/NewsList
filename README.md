@@ -2,7 +2,7 @@
 
 - Start the application.
 - Visit localhost:8080
-- Log in with (user, password)
+- Log in with (user1, user1pass)
 
 # Usage
 

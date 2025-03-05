@@ -3,12 +3,13 @@ spring:
     saml2:
       relyingparty:
         registration:
-          # somerelayingpartyname: # This decides on the callback url!
-          #   signing.credentials:
-          #     - private-key-location: # file:path/to/private.key
-          #       certificate-location: # file:path/to/certificate.crt
-          #   identityprovider:
-          #     metadata-uri: # https://../metadata.php
+          # somerelayingpartyname: # This decides on the callback url! https://<<DOMAIN>>/saml2/service-provider-metadata/<REGISTRATION_ID_HERE>
+          # signing.credentials: &my-metadata
+          #   - private-key-location: file:/opt/artemis/config/shibboleth-sp-key.pem
+          #     certificate-location: file:/opt/artemis/config/shibboleth-sp-cert.crt
+          # decryption.credentials: *my-metadata
+          # assertingparty:
+          #   metadata-uri: URL_TO_METADATA_HERE
 
 news:
   # path to csv files containing (key, message) pairs

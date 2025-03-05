@@ -3,12 +3,9 @@ spring:
     saml2:
       relyingparty:
         registration:
-          one:
-            signing.credentials:
-              - private-key-location: file:/usr/src/newslist/config/credentials/rp-private.key
-                certificate-location: file:/usr/src/newslist/config/credentials/rp-certificate.crt
+          testidp:
             assertingparty:
-              metadata-uri: https://simplesaml-for-spring-saml.apps.pcfone.io/saml2/idp/metadata.php
+              metadata-uri: http://saml:8080/simplesaml/saml2/idp/metadata.php
 
 news:
   # path to csv files containing (key, message) pairs
@@ -17,7 +14,7 @@ news:
   csv-format: Default
   # The saml2 attribute used as key
   saml2-key: uid
-  mail-saml2-key: emailAddress
+  mail-saml2-key: email
 
 logging.level:
   org.springframework.security: TRACE
