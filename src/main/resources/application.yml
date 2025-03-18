@@ -4,6 +4,7 @@ spring:
       relyingparty:
         registration:
           # somerelayingpartyname: # This decides on the callback url! https://<<DOMAIN>>/saml2/service-provider-metadata/<REGISTRATION_ID_HERE>
+          # entityId: someId # You can overwrite the entityId here. Default is: https://<<DOMAIN>>/saml2/service-provider-metadata/<REGISTRATION_ID_HERE>
           # signing.credentials: &my-metadata
           #   - private-key-location: file:/opt/artemis/config/shibboleth-sp-key.pem
           #     certificate-location: file:/opt/artemis/config/shibboleth-sp-cert.crt
