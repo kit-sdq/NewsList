@@ -3,7 +3,7 @@ WORKDIR /usr/src/newslist
 COPY . .
 RUN gradle bootJar
 
-FROM eclipse-temurin:21
+FROM eclipse-temurin:25
 
 USER 999
 
