@@ -4,6 +4,13 @@ plugins {
 	id 'java'
 }
 
+version = '7.0.1' // Marker: Build for Spring Framework 7.0.1
+
+ext {
+	set('spring-security.version', '7.0.0')
+	set('samlVersion', '5.1.6')
+}
+
 repositories {
 	mavenCentral()
 	maven { url "https://repo.spring.io/snapshot" }
@@ -19,12 +26,13 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.security:spring-security-saml2-service-provider'
+    implementation 'org.springframework.boot:spring-boot-security-saml2'
+    implementation 'org.springframework.security:spring-security-saml2-service-provider'
 
 	implementation 'org.apache.commons:commons-csv:1.14.1'
 
 	implementation 'org.webjars:bootstrap:5.3.8'
-	implementation 'org.webjars:webjars-locator-core:0.59'
+	implementation 'org.webjars:webjars-locator-lite:1.1.0'
 
 	testImplementation 'net.sourceforge.htmlunit:htmlunit'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
