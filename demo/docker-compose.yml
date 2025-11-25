@@ -1,6 +1,6 @@
 services:
   newslist:
-    image: ghcr.io/kit-sdq/newslist:latest
+    image: newslist/test
     ports:
       - "8080:8080"
     volumes:

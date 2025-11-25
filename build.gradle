@@ -17,6 +17,7 @@ dependencies {
 		implementation "org.opensaml:opensaml-saml-impl:$samlVersion"
 	}
 	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-security-saml2'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.security:spring-security-saml2-service-provider'
@@ -24,7 +25,7 @@ dependencies {
 	implementation 'org.apache.commons:commons-csv:1.14.1'
 
 	implementation 'org.webjars:bootstrap:5.3.8'
-	implementation 'org.webjars:webjars-locator-lite:1.0.1'
+	implementation 'org.webjars:webjars-locator-lite:1.1.2'
 
 	testImplementation 'net.sourceforge.htmlunit:htmlunit'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
