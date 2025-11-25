@@ -17,6 +17,7 @@ dependencies {
 		implementation "org.opensaml:opensaml-saml-impl:$samlVersion"
 	}
 	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-security-saml2'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.security:spring-security-saml2-service-provider'
